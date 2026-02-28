@@ -1,0 +1,14 @@
+services:
+  n8n:
+    image: n8nio/n8n:2.10.2
+    container_name: n8n
+    restart: unless-stopped
+    environment:
+      GENERIC_TIMEZONE: ${TIMEZONE}
+      NODE_ENV: ${NODE_ENV}
+      N8N_SECURE_COOKIE: ${N8N_SECURE_COOKIE}
+      WEBHOOK_URL: ${WEBHOOK_URL}
+    ports:
+      - "5678:5678"
+    volumes:
+      - /opt/docker/n8n:/home/node/.n8n
