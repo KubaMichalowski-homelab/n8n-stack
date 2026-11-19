@@ -16,7 +16,20 @@ services:
       - /opt/docker/n8n:/home/node/.n8n
     networks:
       - proxy_network
+      - public
+
+  tunnel:
+    image: cloudflare/cloudflared:2026.11.1
+    container_name: tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+    depends_on:
+      - n8n
+    networks:
+      - public
 
 networks:
   proxy_network:
     external: true
+  public:
+    driver: bridge
