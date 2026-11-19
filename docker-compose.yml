@@ -12,6 +12,8 @@ services:
       NODE_ENV: ${NODE_ENV}
       N8N_SECURE_COOKIE: ${N8N_SECURE_COOKIE}
       WEBHOOK_URL: ${WEBHOOK_URL}
+      N8N_EDITOR_BASE_URL: ${N8N_EDITOR_BASE_URL}
+      N8N_PROXY_HOPS: ${N8N_PROXY_HOPS}
     volumes:
       - /opt/docker/n8n:/home/node/.n8n
     networks:
